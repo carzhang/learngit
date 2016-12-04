@@ -1,0 +1,15 @@
+ .vimrc中set tags的使用说明
+
+为一个工程生成tags后，需要用set tags指定。
+set tags+=/mnt/shared/src/tags
+目的是为了让cscope看到。
+
+如果两个目录下的工程，是同一项目的不同版本，都用set tags指定，
+set tags += /目录1/tags    "A版本的tags
+set tags += /目录2/tags    "B版本的tags
+
+此时，cscope都能看到，跳转时，cscope就会把我们带到两个地方，一个是A版本的符号，一个是B版本的符号。
+这样会给开发过程带来困扰。
+需要删除一个set tags项，
+例如删除A版本的，最终.vimrc中只有版本B的
+set tags += /目录2/tags    "B版本的tags
